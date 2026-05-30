@@ -12,7 +12,7 @@ export function DarkModeToggle() {
         'relative inline-flex h-7 w-14 items-center rounded-full',
         'transition-colors duration-300',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500',
-        isDark ? 'bg-indigo-500' : 'bg-slate-300',
+        isDark ? 'bg-indigo-500' : 'bg-[var(--color-border)]',
       ].join(' ')}
     >
       <span

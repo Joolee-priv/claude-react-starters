@@ -140,7 +140,7 @@ export function TodoList() {
             </span>
             <button
               onClick={() => deleteTodo(todo.id)}
-              className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-500 transition-all text-lg leading-none cursor-pointer"
+              className="opacity-0 group-hover:opacity-100 text-[var(--color-text-secondary)] hover:text-red-500 transition-all text-lg leading-none cursor-pointer"
               aria-label="삭제"
             >
               ×
