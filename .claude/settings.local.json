@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\HJLee\\\\workspace\\\\claude-react-starters\" -Recurse -Force | Where-Object {$_.Name -match \"\\\\.\\(json|js|jsx|ts|tsx|config|md\\)$\" -or $_.PSIsContainer} | Select-Object FullName, PSIsContainer | Sort-Object FullName | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem *)",
+      "WebFetch",
+      "Websearch"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty' | tr '\\\\\\\\' '/'); [[ -n \"$FILE\" && \"$FILE\" =~ \\.(ts|tsx|js|jsx)$ ]] && cd 'C:/Users/HJLee/workspace/claude-react-starters' && npx prettier --write \"$FILE\" 2>/dev/null; npx eslint --fix \"$FILE\" 2>/dev/null; true",
+            "statusMessage": "Prettier + ESLint 포맷팅 중...",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
